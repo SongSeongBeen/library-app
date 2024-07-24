@@ -57,7 +57,7 @@ public class BookService {
         // 3. 사용자 정보 확인
         User user = userRepository.findByName(request.getUserName()).orElseThrow(IllegalArgumentException::new);
         // 4. 대출 했으면 저장
-        userLoanHistoryRepository.save(new UserLoanHistory(user.getId(), book.getName()));
+        userLoanHistoryRepository.save(new UserLoanHistory(user, book.getName()));
 
     }
 

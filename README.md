@@ -19,9 +19,9 @@
   - 스프링에서 트랜잭션 제어 방법
   - 트랜잭션 적용과 영속성 컨텍스트
 * Repository
-  - JAP, Hibernate, Spring Data JPA 비교
+  - JPA, Hibernate, Spring Data JPA 비교
   - Spring Data JPA 이용한 자동 쿼리 처리
-* Entity Class 만들기
+* Entity Class 활용
 
 
 

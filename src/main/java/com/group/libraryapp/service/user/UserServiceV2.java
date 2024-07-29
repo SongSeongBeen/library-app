@@ -29,6 +29,8 @@ public class UserServiceV2 {
         3. 1차 캐싱 ID를 기준으로 Entity 기억 필요한 동일 데이터를 사용시 db 통신을 계속 할 필요가 없다(데이터 재사용).
             - 캐싱된 객체는 완전이 동일하다. 인스턴스마다 고유 주소까지 동일
         4. 지연로딩(Lazy Loading) @MoTomany의 fetch 옵션 default - Lazy 적용 (EAGER 적용시 데이터 한번에 가져온다.)
+        * 도메인 설계 시 주의
+        지나치게 사용하면, 성능상 문제가 생길 수도 있고 도메인 간의 복잡한 연결로 인해 시스템을 파악하기 어려워짐
     */
     @Transactional
     public void saveUser(UserCreateRequest request) {

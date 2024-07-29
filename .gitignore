@@ -6,4 +6,4 @@ README.md
 build/.gradle/.idea/
 
 # Ignore the specific application.yml file
-*.yml
+#*.yml

@@ -3,10 +3,7 @@ package com.group.libraryapp.controller.user;
 import com.group.libraryapp.dto.user.request.UserCreateRequest;
 import com.group.libraryapp.dto.user.request.UserUpdateRequest;
 import com.group.libraryapp.dto.user.response.UserResponse;
-import com.group.libraryapp.service.fruit.FruitService;
-import com.group.libraryapp.service.user.UserServiceV1;
 import com.group.libraryapp.service.user.UserServiceV2;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -72,26 +69,69 @@ public class UserController {
             }
         */
 
-    //저장
+    /*
+       사용자 저장
+       HTTP Method : POST
+       HTTP Path : /user
+       HTTP Body (JSON)
+       {
+           "name": String  사용자 이름
+           "age" : Integer 나이
+       }
+       결과 반환 - 처리 여부 X (HTTP상태 200 OK)
+    */
     @PostMapping("/user")
     public void saveUser(@RequestBody UserCreateRequest request) {
         userService.saveUser(request);
     }
-    //조회
+
+    /*
+       사용자 조회
+       HTTP Method : GET
+       HTTP Path : /user
+       결과 반환 List<UserResponse> (HTTP상태 200 OK)
+       {
+           "id"  : long    고유번호
+           "name": String  사용자 이름
+           "age" : Integer 나이
+       }
+    */
     @GetMapping("/user")
     public List<UserResponse> getUsers() {
        return userService.getUsers();
     }
-    //수정
+
+    /*
+       사용자 이름 수정
+       HTTP Method : PUT
+       HTTP Path : /user
+       HTTP Body (JSON)
+       {
+           "id": long  고유번호
+           "name" : String 사용자 이름
+       }
+       결과 반환 성공 - 처리 여부 X (HTTP상태 200 OK)
+                실패 - id 체크 실패 시 IllegalArgumentException (HTTP 상태 500)
+
+    */
     @PutMapping("/user")
     public void updateUser(@RequestBody UserUpdateRequest request) {
         userService.updateUser(request);
     }
-    //삭제
+
+    /*
+       사용자 삭제
+       HTTP Method : DELETE
+       HTTP Path : /user
+       Params : (String)name : 사용자 이름
+       결과 반환  성공 - 처리 여부 X (HTTP상태 200 OK)
+                 실패 - name 체크 실패 시 IllegalArgumentException (HTTP 상태 500)
+    */
     @DeleteMapping("/user")
     public void deleteUser(@RequestParam String name) {
         userService.deleteUser(name);
     }
+
     //test
     @GetMapping("/user/error-test")
     public void errorTest() {

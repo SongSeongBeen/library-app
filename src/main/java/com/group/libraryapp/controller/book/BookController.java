@@ -42,8 +42,8 @@ public class BookController {
        HTTP Path : /book/loan
        HTTP Body (JSON)
        {
-           "userName": String   사용자 이름
-           "bookName": String   책 이름
+           "userName": String 사용자 이름
+           "bookName": String 책 이름
        }
        결과 반환 X(HTTP상태 200 OK)
     */
@@ -58,8 +58,8 @@ public class BookController {
        HTTP Path : /book/return
        HTTP Body (JSON)
        {
-           "userName": String   사용자 이름
-           "bookName": String   책 이름
+           "userName": String 사용자 이름
+           "bookName": String 책 이름
        }
        결과 반환 X(HTTP상태 200 OK)
     */

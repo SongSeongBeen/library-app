@@ -4,7 +4,6 @@ import com.group.libraryapp.domain.book.Book;
 import com.group.libraryapp.domain.book.BookRepository;
 import com.group.libraryapp.domain.user.User;
 import com.group.libraryapp.domain.user.UserRepository;
-import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory;
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistoryRepository;
 import com.group.libraryapp.dto.book.request.BookCreateRequest;
 import com.group.libraryapp.dto.book.request.BookLoanRequest;
@@ -56,8 +55,12 @@ public class BookService {
         System.out.println("book.getName()===" + book.getName());
         // 3. 사용자 정보 확인
         User user = userRepository.findByName(request.getUserName()).orElseThrow(IllegalArgumentException::new);
+
+        //지연로딩 수정
+        //casecade 옵션(새로운 연결관계 적용)
+        user.loanBook(book.getName());
         // 4. 대출 했으면 저장
-        userLoanHistoryRepository.save(new UserLoanHistory(user, book.getName()));
+        //userLoanHistoryRepository.save(new UserLoanHistory(user, book.getName()));
 
     }
 
@@ -66,11 +69,20 @@ public class BookService {
     public void returnBook(BookReturnRequest request) {
         //1. 사용자 확인
         User user = userRepository.findByName(request.getUserName()).orElseThrow(IllegalArgumentException::new);
+        /* 지연로딩 처리
         //2. 책 정보 확인
         UserLoanHistory userBookHistory = userLoanHistoryRepository.findByUserIdAndBookName(user.getId(), request.getBookName())
             .orElseThrow(IllegalArgumentException::new);
         //3. 반납 플래그 변경
         userBookHistory.doReturn();
+        */
+        /*
+            지연로딩(Lazy Loading) default:Lazy (EAGER 적용시 데이터 한번에 가져온다.)
+            user 정보 가져온 후
+            returnBook 메서드 처리 시(필요한 순가에 데이터를 가져온다.)
+            UserLoanHistory 가져온다
+        */
+        user.returnBook(request.getBookName());
 
         //4. 변경 감지 후 영속성 적용 하여 save
     }

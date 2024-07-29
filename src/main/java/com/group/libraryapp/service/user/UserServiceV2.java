@@ -28,10 +28,20 @@ public class UserServiceV2 {
         2. 쓰기지연 DB의 INSERT/UPDATE/DELETE SQL을 트랜잭션이 commit 될때 한번에 실행
         3. 1차 캐싱 ID를 기준으로 Entity 기억 필요한 동일 데이터를 사용시 db 통신을 계속 할 필요가 없다(데이터 재사용).
             - 캐싱된 객체는 완전이 동일하다. 인스턴스마다 고유 주소까지 동일
-        4.
+        4. 지연로딩(Lazy Loading) @MoTomany의 fetch 옵션 default - Lazy 적용 (EAGER 적용시 데이터 한번에 가져온다.)
     */
     @Transactional
     public void saveUser(UserCreateRequest request) {
+        /*
+            1:1관계
+            연관과계 연결 시, 트랜잭션이 끝나지 않았을 경우 한쪽만 연결해 두면 반대 쪽은 알수 없다.
+            ex)
+            set(id)
+            get(id); null
+            setter 연결 시, 객체 끼리도 같이 연결해주면 해결
+            this.user = user;
+            this.user = setUserLoanHistroty
+        */
         //영속성 컨텍스트 시작
         userRepository.save(new User(request.getName(), request.getAge()));
 

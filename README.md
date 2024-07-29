@@ -1,5 +1,5 @@
 # library- app
-## Spring boot, JAP 학습
+## Spring boot, JPA 학습
 ### 개발 버전 정보
 * JDK Amazon Corretto - 21.0.3
 * MySQL - 8.3

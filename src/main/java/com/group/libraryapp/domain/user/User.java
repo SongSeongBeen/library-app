@@ -77,6 +77,7 @@ public class User {
     public void loanBook(String bookName) {
         this.userLoanHistory.add(new UserLoanHistory(this, bookName));
     }
+
     //반납 지연로딩 처리(domain 계층 비즈니스 로직 추가)
     public void returnBook(String bookName) {
         UserLoanHistory targethistory = this.userLoanHistory.stream()

@@ -25,11 +25,11 @@ spring:
 spring:
   config:
     activate:
-      on-profile:  dev #특정옵션일 경우만 사용
+      on-profile: dev #특정옵션일 경우만 사용
   datasource:
     url: "jdbc:mysql://localhost/library"
     username: "root"
-    password: "1234"
+    password: "Abcd1234!"
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:

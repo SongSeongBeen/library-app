@@ -1,10 +1,15 @@
 # library- app
 ## Spring boot, JPA 학습
 ### 개발 버전 정보
-* JDK Amazon Corretto - 21.0.3
+* JAVA - JDK Amazon Corretto - 21.0.3
 * MySQL - 8.3
 * SpringBoot - 3.3.2
 * gradle - 8.8
+* AWS 
+  - Amazon Linux 2023 AMI 2023.5.20240722.0 x86_64 HVM kernel-6.1
+  - 인스턴스 유형 - t2.micro
+* 서비스 도메인 
+  - http://www.neptune-ai.shop:8080/v1/index.html
 
 ## 내용
 * 간단한 도서 관리프로그램 실습을 통한 CRUD 처리

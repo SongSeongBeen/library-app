@@ -20,16 +20,35 @@ spring:
     console:
       enabled: true
       path: /h2-console
+
+  server:
+    ssl:
+      enabled: true
+      key-store: classpath:bootsecurity.p12
+      key-store-password: 123456
+      key-store-type: PKCS12
+      key-alias: bootsecurity
 ---
+
 #dev
+#server
+server:
+  ssl:
+    enabled: true
+    key-store: classpath:bootsecurity.p12
+    key-store-password: 123456
+    key-store-type: PKCS12
+    key-alias: libraryAppSSL
+
 spring:
   config:
     activate:
-      on-profile:  dev #특정옵션일 경우만 사용
+      on-profile: dev #특정옵션일 경우만 사용
   datasource:
     url: "jdbc:mysql://localhost/library"
     username: "root"
     password: "1234"
+    #password: "Abcd1234!"
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -45,3 +64,13 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.MySQL8Dialect
         open-in-view: false
+  thymeleaf:
+    prefix: classpath:/v1/static/
+    suffix: .html
+    mode: HTML
+    cache: false
+  mvc:
+    view:
+      resolver:
+        suffix: .html
+

@@ -22,9 +22,12 @@ public class UserController {
     //private final UserServiceV1 userServiceV1;
     //private final FruitService fruitService;
     //JPA 사용 Service로 변경
+
     public UserController(UserServiceV2 userService) {
         this.userService = userService;
     }
+
+
     /*
     //@Autowired스프링 버전 업으로 생략 가능
     //@Qualifier 클래스이름 소문자로 바꿔서 가져올 스프링 bean에 지정한다(bean등록 시 동일한 명칭으로 맞춰서 사용가능)

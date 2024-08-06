@@ -18,6 +18,8 @@ repositories {
 }
 
 dependencies {
+    //implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.0")
+    //annotationProcessor 'org.projectlombok:lombok'
     /*
         Spring Data JPA
         JPA(ORM)
